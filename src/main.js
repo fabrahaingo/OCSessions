@@ -39,7 +39,6 @@ async function main() {
       })
     }
   ).then((response) => response.json())
-  console.log(sessionsList)
   createSessionsTable(sessionsList)
 }
 
