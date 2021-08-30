@@ -1,7 +1,3 @@
-Element.prototype.appendAfter = function (element) {
-  element.parentNode.insertBefore(this, element.nextSibling)
-}
-
 function addGlobalStyle() {
   const style = document.createElement('style')
   style.innerHTML = `
@@ -19,6 +15,9 @@ function addGlobalStyle() {
         box-shadow: 0 6px 6px 0 rgb(0 0 0 / 26%), 0 10px 20px 0 rgb(0 0 0 / 19%);
         color: white;
         transition: all 0.3s;
+      }
+      .customTitle {
+        margin-top: 40px;
       }
     `
   document.head.appendChild(style)
@@ -62,23 +61,17 @@ function createTableBody(table, sessions) {
 }
 
 function createSessionsTable(sessions) {
-  let anchor = null
-
-  if (document.getElementById('courses-taken'))
-    anchor = document.getElementById('courses-taken')
-  else if (document.getElementById('dashboard-sessions'))
-    anchor = document.getElementById('dashboard-sessions')
-  else return
+  const anchor = document.getElementById('dashboard-sessions');
 
   let h1 = document.createElement('h1')
   let table = document.createElement('table')
 
-  h1.classList.add('secondTitle')
+  h1.classList.add('secondTitle', 'customTitle')
   table.classList.add('crud-list')
-  h1.innerText = 'Sessions de mentorat'
+  h1.innerText = 'Historique de mes sessions de mentorat'
 
-  h1.appendAfter(anchor)
-  table.appendAfter(h1)
+  anchor.insertBefore(h1, null)
+  anchor.insertBefore(table, null);
 
   createTableHead(table)
   createTableBody(table, sessions)
