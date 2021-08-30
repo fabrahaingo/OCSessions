@@ -60,9 +60,7 @@ function createTableBody(table, sessions) {
   table.innerHTML += bodyContent
 }
 
-function createSessionsTable(sessions) {
-  const anchor = document.getElementById('dashboard-sessions');
-
+function createSessionsTable(sessions, anchor) {
   let h1 = document.createElement('h1')
   let table = document.createElement('table')
 
@@ -71,7 +69,7 @@ function createSessionsTable(sessions) {
   h1.innerText = 'Historique de mes sessions de mentorat'
 
   anchor.insertBefore(h1, null)
-  anchor.insertBefore(table, null);
+  anchor.insertBefore(table, null)
 
   createTableHead(table)
   createTableBody(table, sessions)

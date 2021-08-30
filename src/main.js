@@ -28,6 +28,11 @@ async function findUserId(token) {
 }
 
 async function main() {
+  // check first if dashboard-sessions div is on page
+  // if not, do nothing (not even API call)
+  const anchor = document.getElementById('dashboard-sessions')
+  if (!anchor) return
+
   let APIToken = await findAPIToken()
   let userId = await findUserId(APIToken)
 
@@ -39,7 +44,7 @@ async function main() {
       })
     }
   ).then((response) => response.json())
-  createSessionsTable(sessionsList)
+  createSessionsTable(sessionsList, anchor)
 }
 
 main()

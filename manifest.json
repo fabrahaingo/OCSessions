@@ -11,7 +11,7 @@
   "permissions": ["activeTab", "storage"],
   "content_scripts": [
     {
-      "matches": ["https://openclassrooms.com/fr/dashboard*"],
+      "matches": ["https://openclassrooms.com/fr/dashboard/sessions"],
       "js": ["src/main.js", "src/buildFront.js"]
     }
   ]
