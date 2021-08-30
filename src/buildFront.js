@@ -62,7 +62,14 @@ function createTableBody(table, sessions) {
 }
 
 function createSessionsTable(sessions) {
-  let anchor = document.getElementById('courses-taken')
+  let anchor = null
+
+  if (document.getElementById('courses-taken'))
+    anchor = document.getElementById('courses-taken')
+  else if (document.getElementById('dashboard-sessions'))
+    anchor = document.getElementById('dashboard-sessions')
+  else return
+
   let h1 = document.createElement('h1')
   let table = document.createElement('table')
 
