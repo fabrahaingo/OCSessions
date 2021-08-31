@@ -27,7 +27,12 @@ async function findUserId(token) {
     .then((userInfo) => userInfo.id)
 }
 
-async function main(anchor) {
+async function main(anchor, fr) {
+  let h1 = document.createElement('h1')
+  h1.classList.add('secondTitle', 'customTitle')
+  h1.innerText = (fr) ? 'Historique de mes sessions de mentorat' : 'History of my mentoring sessions';
+  anchor.insertBefore(h1, null);
+
   let APIToken = await findAPIToken()
   let userId = await findUserId(APIToken)
 
@@ -49,7 +54,7 @@ let done = false;
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === 'TabUpdated') {
     if (document.location.href.includes('dashboard/sessions') && document.getElementById('dashboard-sessions') && !done) {
-      main(document.getElementById('dashboard-sessions'))
+      main(document.getElementById('dashboard-sessions'), document.location.href.includes('/fr/'))
       done = true
     }
   }
