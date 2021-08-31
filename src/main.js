@@ -48,8 +48,7 @@ let done = false;
 // Check URL changing and launch main() if we're on Sessions & done == false, i.e. not build yet
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === 'TabUpdated') {
-    console.log(document.location.href)
-    if (document.location.href == "https://openclassrooms.com/fr/dashboard/sessions" && document.getElementById('dashboard-sessions') && !done) {
+    if (document.location.href.includes('dashboard/sessions') && document.getElementById('dashboard-sessions') && !done) {
       main(document.getElementById('dashboard-sessions'))
       done = true
     }

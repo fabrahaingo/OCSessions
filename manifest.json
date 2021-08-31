@@ -16,7 +16,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://openclassrooms.com/fr/dashboard/*"
+        "https://openclassrooms.com/*/dashboard/*"
       ],
       "js": [
         "src/main.js",
