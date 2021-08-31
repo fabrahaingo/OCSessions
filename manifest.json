@@ -10,7 +10,8 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "content_scripts": [
     {
@@ -22,5 +23,10 @@
         "src/buildFront.js"
       ]
     }
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "src/background.js"
+    ]
+  }
 }

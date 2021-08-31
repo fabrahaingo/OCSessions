@@ -27,12 +27,7 @@ async function findUserId(token) {
     .then((userInfo) => userInfo.id)
 }
 
-async function main() {
-  // check first if dashboard-sessions div is on page
-  // if not, do nothing (not even API call)
-  const anchor = document.getElementById('dashboard-sessions')
-  if (!anchor) return
-
+async function main(anchor) {
   let APIToken = await findAPIToken()
   let userId = await findUserId(APIToken)
 
@@ -47,4 +42,16 @@ async function main() {
   createSessionsTable(sessionsList, anchor)
 }
 
-main()
+// Indicator if table has already bean build
+let done = false;
+
+// Check URL changing and launch main() if we're on Sessions & done == false, i.e. not build yet
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  if (request.message === 'TabUpdated') {
+    console.log(document.location.href)
+    if (document.location.href == "https://openclassrooms.com/fr/dashboard/sessions" && document.getElementById('dashboard-sessions') && !done) {
+      main(document.getElementById('dashboard-sessions'))
+      done = true
+    }
+  }
+})
