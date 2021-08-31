@@ -46,7 +46,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![OCSessions preview](./img/OCSessions_preview.jpg)
 
 Quite recently, OpenClassrooms launched its API.<br>
 This is great news for us developers: meaning that we can easily get features that don't exist, without waiting for the official release.
