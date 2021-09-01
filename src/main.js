@@ -48,7 +48,7 @@ async function main(anchor, lang) {
   createSessionsTable(sessionsList, anchor, lang);
 }
 
-// Indicator if table has already bean build
+// Indicator if table has already been built
 let done = false;
 
 // Check URL changing and launch main() if we're on Sessions & done == false, i.e. not build yet

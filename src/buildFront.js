@@ -67,5 +67,4 @@ function createSessionsTable(sessions, anchor, lang) {
   anchor.insertBefore(table, null)
   createTableHead(table, lang)
   createTableBody(table, lang, sessions)
-
 }
