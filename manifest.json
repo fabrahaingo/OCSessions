@@ -10,11 +10,13 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "content_scripts": [
     {
       "matches": [
+        "https://openclassrooms.com/en/dashboard/*",
         "https://openclassrooms.com/fr/dashboard/*"
       ],
       "js": [
@@ -22,5 +24,10 @@
         "src/buildFront.js"
       ]
     }
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "src/background.js"
+    ]
+  }
 }
