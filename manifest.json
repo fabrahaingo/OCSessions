@@ -20,6 +20,7 @@
         "https://openclassrooms.com/fr/dashboard/*"
       ],
       "js": [
+        "src/languages.js",
         "src/main.js",
         "src/buildFront.js"
       ]

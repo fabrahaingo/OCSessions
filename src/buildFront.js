@@ -23,35 +23,36 @@ function addGlobalStyle() {
   document.head.appendChild(style)
 }
 
-function createTableHead(table) {
+function createTableHead(table, lang) {
   const headContent = `
     <thead>
       <tr>
-        <td>Date de session</td>
-        <td>Statut</td>
-        <td>Actions</td>
+        <td>${configText[lang].date}</td>
+        <td>${configText[lang].status}</td>
+        <td>${configText[lang].actions}</td>
       </tr>
     </thead>
   `
   table.innerHTML = headContent
 }
 
-function createTableBody(table, sessions) {
+function createTableBody(table, lang, sessions) {
   let bodyContent = '<tbody>'
   let dateOptions = {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
   }
+  let localLang = `${lang}-${lang.toUpperCase()}`;
   for (let elem of sessions) {
     let sessionDate = new Date(elem.sessionDate)
-    let dayMonthYear = sessionDate.toLocaleDateString('fr-FR', dateOptions)
+    let dayMonthYear = sessionDate.toLocaleDateString(localLang, dateOptions)
     let hour = sessionDate.getHours()
     let minute = sessionDate.getMinutes() || '00'
     let sessionContent = `<tr>
-      <td>${dayMonthYear} à ${hour}:${minute}</td>
-      <td>${elem.status}</td>
-      <td><a href="/fr/mentorship/sessions/${elem.id}" class="see-session-button">Consulter</a></td>
+      <td>${dayMonthYear} ${configText[lang].hour} ${hour}:${minute}</td>
+      <td>${configText[lang][elem.status]}</td>
+      <td><a href="/fr/mentorship/sessions/${elem.id}" class="see-session-button">${configText[lang].consult}</a></td>
       </tr>
     `
     bodyContent += sessionContent
@@ -60,11 +61,10 @@ function createTableBody(table, sessions) {
   table.innerHTML += bodyContent
 }
 
-function createSessionsTable(sessions, anchor) {
+function createSessionsTable(sessions, anchor, lang) {
   let table = document.createElement('table')
   table.classList.add('crud-list')
   anchor.insertBefore(table, null)
-  createTableHead(table)
-  createTableBody(table, sessions)
-  addGlobalStyle()
+  createTableHead(table, lang)
+  createTableBody(table, lang, sessions)
 }
