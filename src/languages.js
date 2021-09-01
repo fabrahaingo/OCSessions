@@ -7,6 +7,7 @@ const configText = {
         "actions": "Actions",
         "consult": "Consulter",
         "completed": "Terminée",
+        "pending": "En cours",
         "canceled": "Annulée"
     },
     "en": {
@@ -17,6 +18,7 @@ const configText = {
         "actions": "Actions",
         "consult": "See more",
         "completed": "Completed",
+        "pending": "Pending",
         "canceled": "Canceled"
     }
 }
