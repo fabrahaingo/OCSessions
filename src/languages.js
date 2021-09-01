@@ -6,9 +6,12 @@ const configText = {
         "status": "Statut",
         "actions": "Actions",
         "consult": "Consulter",
-        "completed": "Terminée",
-        "pending": "En cours",
-        "canceled": "Annulée"
+        "statusText": {
+            "completed": "Terminée",
+            "pending": "En attente",
+            "marked student as absent": "Apprenant signalé absent",
+            "canceled": "Annulée"
+        }
     },
     "en": {
         "title": "History of my mentorship sessions",
@@ -17,8 +20,11 @@ const configText = {
         "status": "Status",
         "actions": "Actions",
         "consult": "See more",
-        "completed": "Completed",
-        "pending": "Pending",
-        "canceled": "Canceled"
+        "statusText": {
+            "completed": "Completed",
+            "pending": "Pending",
+            "marked student as absent": "Marked student as absent",
+            "canceled": "Canceled"
+        }
     }
 }

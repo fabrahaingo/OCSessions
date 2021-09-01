@@ -51,7 +51,7 @@ function createTableBody(table, lang, sessions) {
     let minute = sessionDate.getMinutes() || '00'
     let sessionContent = `<tr>
       <td>${dayMonthYear} ${configText[lang].hour} ${hour}:${minute}</td>
-      <td>${configText[lang][elem.status]}</td>
+      <td>${(configText[lang].statusText[elem.status] == undefined) ? elem.status : configText[lang].statusText[elem.status]}</td>
       <td><a href="/fr/mentorship/sessions/${elem.id}" class="see-session-button">${configText[lang].consult}</a></td>
       </tr>
     `
