@@ -10,7 +10,7 @@ const configText = {
         "canceled": "Annulée"
     },
     "en": {
-        "title": "History of my mentoring sessions",
+        "title": "History of my mentorship sessions",
         "date": "Date of session",
         "hour": "at",
         "status": "Status",
