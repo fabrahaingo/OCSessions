@@ -1,5 +1,5 @@
 function addGlobalStyle() {
-  const style = document.createElement('style')
+  const style = document.createElement('style');
   style.innerHTML = `
       .see-session-button {
         background-color: #7451eb !important;
@@ -19,43 +19,49 @@ function addGlobalStyle() {
       .customTitle {
         margin-top: 40px;
       }
-    `
-  document.head.appendChild(style)
+    `;
+  document.head.appendChild(style);
+}
+
+function createTitle(anchor, lang) {
+  let h1 = document.createElement('h1');
+  h1.classList.add('secondTitle', 'customTitle');
+  h1.innerText = lang.title;
+  anchor.insertBefore(h1, null);
 }
 
 function createTableHead(table, lang) {
   const headContent = `
     <thead>
       <tr>
-        <td>${configText[lang].date}</td>
-        <td>${configText[lang].status}</td>
-        <td>${configText[lang].actions}</td>
+        <td>${lang.date}</td>
+        <td>${lang.status}</td>
+        <td>${lang.actions}</td>
       </tr>
     </thead>
-  `
-  table.innerHTML = headContent
+  `;
+  table.innerHTML = headContent;
 }
 
 function createTableBody(table, lang, sessions) {
-  let bodyContent = '<tbody>'
-  let dateOptions = {
+  let bodyContent = '<tbody>';
+  const dateOptions = {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
-  }
-  let localLang = `${lang}-${lang.toUpperCase()}`;
+  };
+  const timeOptions = { hour: '2-digit', minute: '2-digit' };
   for (let elem of sessions) {
-    let sessionDate = new Date(elem.sessionDate)
-    let dayMonthYear = sessionDate.toLocaleDateString(localLang, dateOptions)
-    let hour = sessionDate.getHours()
-    let minute = sessionDate.getMinutes() || '00'
+    let sessionDate = new Date(elem.sessionDate);
+    let dayMonthYear = sessionDate.toLocaleDateString(lang.localLang, dateOptions);
+    let time = sessionDate.toLocaleTimeString(lang.localLang, timeOptions);
     let sessionContent = `<tr>
-      <td>${dayMonthYear} ${configText[lang].hour} ${hour}:${minute}</td>
-      <td>${(configText[lang].statusText[elem.status] == undefined) ? elem.status : configText[lang].statusText[elem.status]}</td>
-      <td><a href="/fr/mentorship/sessions/${elem.id}" class="see-session-button">${configText[lang].consult}</a></td>
+      <td>${dayMonthYear} ${lang.hour} ${time}</td>
+      <td>${lang.statusText[elem.status] ?? elem.status}</td>
+      <td><a href="/fr/mentorship/sessions/${elem.id}" class="see-session-button">${lang.consult}</a></td>
       </tr>
-    `
-    bodyContent += sessionContent
+    `;
+    bodyContent += sessionContent;
   }
   bodyContent += '</tbody>'
   table.innerHTML += bodyContent

@@ -29,10 +29,7 @@ async function findUserId(token) {
 
 async function main(anchor, lang) {
   addGlobalStyle();
-  let h1 = document.createElement('h1');
-  h1.classList.add('secondTitle', 'customTitle');
-  h1.innerText = configText[lang].title;
-  anchor.insertBefore(h1, null);
+  createTitle(anchor, lang);
 
   let APIToken = await findAPIToken();
   let userId = await findUserId(APIToken);
@@ -45,6 +42,7 @@ async function main(anchor, lang) {
       })
     }
   ).then((response) => response.json());
+
   createSessionsTable(sessionsList, anchor, lang);
 }
 
@@ -56,7 +54,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === 'TabUpdated') {
     if (document.location.href.includes('dashboard/sessions') && document.getElementById('dashboard-sessions') && !done) {
       const anchor = document.getElementById('dashboard-sessions');
-      const lang = document.location.href.includes('/fr/') ? "fr" : "en";
+      const lang = configText[document.location.href.includes('/fr/') ? "fr" : "en"];
       main(anchor, lang);
       done = true;
     }

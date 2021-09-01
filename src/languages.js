@@ -1,5 +1,6 @@
 const configText = {
     "fr": {
+        "localLang": "fr-FR",
         "title": "Historique de mes sessions de mentorat",
         "date": "Date de session",
         "hour": "à",
@@ -14,12 +15,13 @@ const configText = {
         }
     },
     "en": {
+        "localLang": "en-EN",
         "title": "History of my mentorship sessions",
         "date": "Date of session",
         "hour": "at",
         "status": "Status",
         "actions": "Actions",
-        "consult": "See more",
+        "consult": "Explore",
         "statusText": {
             "completed": "Completed",
             "pending": "Pending",
