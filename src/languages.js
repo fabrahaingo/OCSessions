@@ -2,8 +2,8 @@ const configText = {
     "fr": {
         "title": "Historique de mes sessions de mentorat",
         "date": "Date de session",
-        "hour": "a",
-        "status": "Status",
+        "hour": "à",
+        "status": "Statut",
         "actions": "Actions",
         "consult": "Consulter",
         "completed": "Terminée",
